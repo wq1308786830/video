@@ -10,9 +10,9 @@ spring:
       enabled: true
 
   datasource:
-    url: ${RUSSELL_MALL_DB_URL:jdbc:mysql://localhost:3306/russell?useUnicode=true&characterEncoding=utf8&useSSL=false}
-    username: ${RUSSELL_MALL_DB_NAME:root}
-    password: ${RUSSELL_MALL_DB_PASSWORD:92QWWQ0828MM}
+    url: ${RUSSELL_VIDEO_DB_URL:jdbc:mysql://localhost:3306/wechat_video?useUnicode=true&characterEncoding=utf8&useSSL=false}
+    username: ${RUSSELL_VIDEO_DB_NAME:root}
+    password: ${RUSSELL_VIDEO_DB_PASSWORD:92QWWQ0828MM}
     driver-class-name: com.mysql.jdbc.Driver
     schema: classpath:import.sql
 
@@ -28,6 +28,17 @@ mybatis:
 logging:
   level:
     root: warn
-    com.russell.mall.mapper: debug
+    com.russell.video.mapper: debug
+
+myprops:
+  componentid: wx01a775894f92bb9d
+  componentsecret: e82cd0790f947906a0c6da935eb3b5b3
+  componenttoken: iudei837h48js
+  componentkey: kG7KxdshQCduNnTEjI8tmEYQZVPDeQ9iXQzm7ECyYS2
+  componenturl: http://oauth.saas.biosan.cn/
+  authorizerappid: wx01a775894f92bb9d
+  wechataddress: https://api.weixin.qq.com
+  mobilefromid: ${spring.application.name}${server.port}
+  usersessiontimeout: 1800
 
 

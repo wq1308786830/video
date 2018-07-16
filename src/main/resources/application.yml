@@ -1,0 +1,33 @@
+server:
+  port: 8000
+spring:
+
+  application:
+    name: Video-Russell
+
+  devtools:
+    livereload:
+      enabled: true
+
+  datasource:
+    url: ${RUSSELL_MALL_DB_URL:jdbc:mysql://localhost:3306/russell?useUnicode=true&characterEncoding=utf8&useSSL=false}
+    username: ${RUSSELL_MALL_DB_NAME:root}
+    password: ${RUSSELL_MALL_DB_PASSWORD:92QWWQ0828MM}
+    driver-class-name: com.mysql.jdbc.Driver
+    schema: classpath:import.sql
+
+  freemarker:
+    check-template-location: false
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+
+logging:
+  level:
+    root: warn
+    com.russell.mall.mapper: debug
+
+

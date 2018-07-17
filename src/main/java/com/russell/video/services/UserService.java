@@ -1,9 +1,9 @@
 package com.russell.video.services;
 
-import com.russell.video.domain.WeChatUser;
+import com.russell.video.domain.User;
 
 public interface UserService {
 
-    WeChatUser login(String code);
+    User login(String code);
 
 }

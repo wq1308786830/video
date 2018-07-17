@@ -1,6 +1,6 @@
 package com.russell.video.controllers;
 
-import com.russell.video.domain.WeChatUser;
+import com.russell.video.domain.User;
 import com.russell.video.services.UserService;
 import com.russell.video.utils.Result;
 import com.russell.video.utils.ResultCode;
@@ -19,15 +19,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     @Transactional(rollbackFor = RuntimeException.class)
     public Result login(String code) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
-        Result result = new Result();
         if (StringUtils.isEmpty(code)) {
             return Result.failure(ResultCode.PARAM_IS_BLANK, "微信code为空！");
         }
 
-        userService.login(code);
-        return  Result.failure(ResultCode.PARAM_IS_BLANK, "微信code为空！");
+        User user = null;
+        try {
+            user = userService.login(code);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.failure(ResultCode.PARAM_IS_BLANK, "登录失败！");
+        }
+        return Result.success(user);
     }
 }

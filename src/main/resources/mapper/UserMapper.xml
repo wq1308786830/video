@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.russell.video.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.russell.video.domain.User">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="user_mobile" property="userMobile" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_passwd" property="mobileType" jdbcType="VARCHAR"/>
+        <result column="open_id" property="openId" jdbcType="VARCHAR"/>
+        <result column="create_date_time" property="createDateTime" jdbcType="TIMESTAMP"/>
+        <result column="update_date_time" property="updateDateTime" jdbcType="TIMESTAMP"/>
+        <result column="user_state" property="userState" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="findByOpenId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from user where open_id = #{openId}
+    </select>
+    <insert id="saveUser" parameterType="Integer" useGeneratedKeys="true"
+            keyProperty="id">
+	    insert into user (user_id, open_id, create_date_time, update_date_time, user_state) values (
+	    	#{userId}, #{openId}, #{createDateTime}, #{updateDateTime}, #{userState}
+	    )
+	</insert>
+</mapper>

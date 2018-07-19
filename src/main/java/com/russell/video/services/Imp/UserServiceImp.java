@@ -29,8 +29,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User login(String code) {
 
-        String token = null;
-        Map<String, Object> wxData = null;
+        Map<String, Object> wxData;
         User user = null;
         try {
             wxData = weChatService.getOpenIdByCode(code);
@@ -40,15 +39,16 @@ public class UserServiceImp implements UserService {
         }
         if (wxData.get("openid") != null) {
             user = userMapper.findByOpenId(wxData.get("openid").toString());
-            if (user == null) {
-                user = new User();
-                user.setUserId(java.util.UUID.randomUUID().toString());
-                user.setOpenId(wxData.get("openid").toString());
-                user.setCreateDateTime(new Date());
-                user.setUpdateDateTime(new Date());
-                user.setUserState(1);
-                userMapper.saveUser(user);
+            if (user != null) {
+                return user;
             }
+            user = new User();
+            user.setUserId(java.util.UUID.randomUUID().toString());
+            user.setOpenId(wxData.get("openid").toString());
+            user.setCreateDateTime(new Date());
+            user.setUpdateDateTime(new Date());
+            user.setUserState(1);
+            userMapper.saveUser(user);
         }
         return user;
     }

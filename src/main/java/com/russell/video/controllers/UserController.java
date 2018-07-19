@@ -26,12 +26,12 @@ public class UserController {
             return Result.failure(ResultCode.PARAM_IS_BLANK, "微信code为空！");
         }
 
-        User user = null;
+        User user;
         try {
             user = userService.login(code);
         } catch (Exception e) {
             e.printStackTrace();
-            return Result.failure(ResultCode.PARAM_IS_BLANK, "登录失败！");
+            return Result.failure(ResultCode.INTERFACE_INNER_INVOKE_ERROR, "登录失败！");
         }
         return Result.success(user);
     }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.russell.video.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="com.russell.video.domain.User">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="user_id" property="userId" jdbcType="VARCHAR"/>
         <result column="user_mobile" property="userMobile" jdbcType="VARCHAR"/>
         <result column="user_name" property="userName" jdbcType="VARCHAR"/>
@@ -17,8 +17,7 @@
     <select id="findByOpenId" resultMap="BaseResultMap" parameterType="java.lang.String">
         select * from user where open_id = #{openId}
     </select>
-    <insert id="saveUser" parameterType="Integer" useGeneratedKeys="true"
-            keyProperty="id">
+    <insert id="saveUser" useGeneratedKeys="true" keyProperty="id">
 	    insert into user (user_id, open_id, create_date_time, update_date_time, user_state) values (
 	    	#{userId}, #{openId}, #{createDateTime}, #{updateDateTime}, #{userState}
 	    )

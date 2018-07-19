@@ -21,7 +21,7 @@ public class UserController {
 
     @PostMapping("/login")
     @Transactional(rollbackFor = RuntimeException.class)
-    public Result login(String code) throws IllegalAccessException, NoSuchAlgorithmException, IOException {
+    public Result login(String code) {
         if (StringUtils.isEmpty(code)) {
             return Result.failure(ResultCode.PARAM_IS_BLANK, "微信code为空！");
         }

@@ -52,4 +52,10 @@ public class UserServiceImp implements UserService {
         }
         return user;
     }
+
+    @Override
+    public String getToken(String openId, String sessionKey) {
+
+        return null;
+    }
 }

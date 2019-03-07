@@ -6,4 +6,6 @@ public interface UserService {
 
     User login(String code);
 
+    String getToken(String openId, String sessionKey);
+
 }

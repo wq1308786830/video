@@ -1,24 +1,42 @@
---
---    Copyright 2015-2016 the original author or authors.
---
---    Licensed under the Apache License, Version 2.0 (the "License");
---    you may not use this file except in compliance with the License.
---    You may obtain a copy of the License at
---
---       http://www.apache.org/licenses/LICENSE-2.0
---
---    Unless required by applicable law or agreed to in writing, software
---    distributed under the License is distributed on an "AS IS" BASIS,
---    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
---    See the License for the specific language governing permissions and
---    limitations under the License.
---
+/*
+ Navicat Premium Data Transfer
 
-drop table if exists city;
-drop table if exists hotel;
+ Source Server         : mysql
+ Source Server Type    : MySQL
+ Source Server Version : 50720
+ Source Host           : localhost:3306
+ Source Schema         : wechat_video
 
-create table city (id int primary key auto_increment, name varchar(256), state varchar(256), country varchar(256));
-create table hotel (city int, name varchar(256), address varchar(256), zip varchar(256));
+ Target Server Type    : MySQL
+ Target Server Version : 50720
+ File Encoding         : 65001
 
-insert into city (name, state, country) values ('San Francisco', 'CA', 'US');
-insert into hotel(city, name, address, zip) values (1, 'Conrad Treasury Place', 'William & George Streets', '4001')
+ Date: 19/07/2018 21:37:52
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `open_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `user_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `user_mobile` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `user_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `user_passwd` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `create_date_time` datetime(0) NULL DEFAULT NULL,
+  `update_date_time` datetime(0) NULL DEFAULT NULL,
+  `user_state` int(2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, 'oe_7_0IhGUjdZkoEev_HkF1X0vtY', 'ebe22117-bd83-4e3b-af40-076d70f37588', NULL, NULL, NULL, '2018-07-19 21:35:48', '2018-07-19 21:35:48', 1);
+
+SET FOREIGN_KEY_CHECKS = 1;
